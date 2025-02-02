@@ -4,43 +4,66 @@
 		<meta charset="UTF-8" />
 		<link rel="icon" type="image/svg+xml" href="/vite.svg" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Vite + Lit + TS</title>
-		<script src="https://cdn.jsdelivr.net/npm/@tsparticles/preset-confetti@3/tsparticles.preset.confetti.bundle.min.js"></script>
+		<title>HAPPY BDAY SAM</title>
 		<link rel="stylesheet" href="./src/index.css" />
 		<script type="module" src="/src/slideshow.ts"></script>
-		<script type="module" src="/src/HiddenContent.ts"></script>
 	</head>
 	<body>
-		<div id="confetti-container"></div>
-			<main>
-				<h1>HAPPY 18TH BIRTHDAY SAM</h1>
-				<photo-slideshow></photo-slideshow>
-				<h1>THANKS FOR BEING OUR FRIEND!</h1>
-			</main>
+		<main id="startbtn"><h1>START</h1></main>
+		<main id="lezgo" style="display: none">
+			<h1>HAPPY 18TH BIRTHDAY SAM</h1>
+			<photo-slideshow></photo-slideshow>
+			<h1>THANKS FOR BEING OUR FRIEND!</h1>
+		</main>
+		<div id="loader" style="display: none;">
+			<p>Loading ...</p>
+		</div>
 		<script>
-			// Initialize tsParticles for confetti effect
-			tsParticles.load("confetti-container", {
-				preset: "confetti", // Use the built-in confetti preset
-				particles: {
-					number: {
-						value: 100, // Number of confetti particles
-					},
-					shape: {
-						type: "triangle", // Shape of confetti
-					},
-					size: {
-						value: 3, // Size of confetti
-					},
-					opacity: {
-						value: 1, // Full opacity
-					},
-					move: {
-						enable: true,
-						speed: 5, // Speed of confetti movement
-						direction: "none", // Allow random direction
-						outMode: "out", // Allow confetti to leave the screen
-					},
-				},
+			audio1 = new Audio('/audio/csr.mp3'); 
+			audio2 = new Audio('/audio/happybday.mp3'); 
+		
+			// Add event listeners to handle audio playback completion
+			audio1.addEventListener('ended', () => playRandomAudio());
+			audio2.addEventListener('ended', () => playRandomAudio());
+
+			function playRandomAudio() {
+			return new Promise((resolve, reject) => {
+				const randomAudio = Math.random() > 0.5 ? this.audio1 : this.audio2;
+
+				// Check if the audio is loaded and can be played
+				if (!randomAudio) {
+					reject("Audio not available");
+					return;
+				}
+
+				randomAudio.play();
+
+				randomAudio.onended = () => {
+					resolve(); // Resolve the promise when the audio finishes playing
+				};
+
+				randomAudio.onerror = (err) => {
+					reject(err); // Reject the promise if there's an error
+				};
+			});
+		}
+
+			let startbtn = document.getElementById("startbtn");
+			let content = document.getElementById("lezgo");
+			const loader = document.getElementById("loader");
+
+			startbtn.addEventListener("click", () => {
+				console.log("clicked");
+				//Show the loader and hide the button
+				loader.style.display = "";
+				startbtn.style.display = "none";
+				playRandomAudio();
+				content.style.display = "";
+				loader.style.display = "none";
+				// TODO: fix the loading decoding issue
+				// playRandomAudio().then(() => {
+				// 	//Hide the loader and show the content
+				// });
 			});
 		</script>
 	</body>

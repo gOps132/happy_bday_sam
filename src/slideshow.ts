@@ -34,6 +34,8 @@ export class PhotoSlideshow extends LitElement {
 			opacity: 1;
 			border-radius: 15pt;
 		}
+
+		
 	`;
 
 	@property({ type: Array }) images: string[] = [];
@@ -42,24 +44,24 @@ export class PhotoSlideshow extends LitElement {
 	private currentIndex = 0;
 	private aspectRatio = 1;
 
-	private audio1 : HTMLAudioElement;
-	private audio2 : HTMLAudioElement;
+	// private audio1 : HTMLAudioElement;
+	// private audio2 : HTMLAudioElement;
 
 	constructor() {
 		super();
-		this.audio1 = new Audio('/audio/csr.mp3'); 
-		this.audio2 = new Audio('/audio/happybday.mp3'); 
+		// this.audio1 = new Audio('/audio/csr.mp3'); 
+		// this.audio2 = new Audio('/audio/happybday.mp3'); 
 	
 		// Add event listeners to handle audio playback completion
-		this.audio1.addEventListener('ended', () => this.playRandomAudio());
-		this.audio2.addEventListener('ended', () => this.playRandomAudio());
+		// this.audio1.addEventListener('ended', () => this.playRandomAudio());
+		// this.audio2.addEventListener('ended', () => this.playRandomAudio());
 	}
 
 	// Play random audio
-	playRandomAudio() {
-		const randomAudio = Math.random() > 0.5 ? this.audio1 : this.audio2;
-		randomAudio.play();
-	}
+	// playRandomAudio() {
+	// 	const randomAudio = Math.random() > 0.5 ? this.audio1 : this.audio2;
+	// 	randomAudio.play();
+	// }
 	
 	connectedCallback() {
 		super.connectedCallback();
@@ -69,14 +71,14 @@ export class PhotoSlideshow extends LitElement {
 		}
 		this.loadImageAspectRatio();
 		this.startTimer();
-		this.playRandomAudio();
+		// this.playRandomAudio();
 		this.addEventListener('click', this.handleClick);
 	}
 
 	disconnectedCallback() {
 		super.disconnectedCallback();
-		this.audio1.pause();
-		this.audio2.pause();
+		// this.audio1.pause();
+		// this.audio2.pause();
 		clearInterval(this.timer);
 	}
 
@@ -85,7 +87,6 @@ export class PhotoSlideshow extends LitElement {
 		const windowWidth = window.innerWidth;
 		const clickPosition = event.clientX;
 		
-		console.log("clicked");
 		// If click is on the left half of the window, go to the previous image
 		if (clickPosition < windowWidth / 2) {
 			this.prevImage();
