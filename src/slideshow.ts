@@ -44,25 +44,10 @@ export class PhotoSlideshow extends LitElement {
 	private currentIndex = 0;
 	private aspectRatio = 1;
 
-	// private audio1 : HTMLAudioElement;
-	// private audio2 : HTMLAudioElement;
-
 	constructor() {
 		super();
-		// this.audio1 = new Audio('/audio/csr.mp3'); 
-		// this.audio2 = new Audio('/audio/happybday.mp3'); 
-	
-		// Add event listeners to handle audio playback completion
-		// this.audio1.addEventListener('ended', () => this.playRandomAudio());
-		// this.audio2.addEventListener('ended', () => this.playRandomAudio());
 	}
 
-	// Play random audio
-	// playRandomAudio() {
-	// 	const randomAudio = Math.random() > 0.5 ? this.audio1 : this.audio2;
-	// 	randomAudio.play();
-	// }
-	
 	connectedCallback() {
 		super.connectedCallback();
 		this.images = [];
@@ -71,14 +56,11 @@ export class PhotoSlideshow extends LitElement {
 		}
 		this.loadImageAspectRatio();
 		this.startTimer();
-		// this.playRandomAudio();
 		this.addEventListener('click', this.handleClick);
 	}
 
 	disconnectedCallback() {
 		super.disconnectedCallback();
-		// this.audio1.pause();
-		// this.audio2.pause();
 		clearInterval(this.timer);
 	}
 
@@ -131,8 +113,3 @@ export class PhotoSlideshow extends LitElement {
 		`;
 	}
 }
-
-// src/main.ts
-// import './slideshow';
-
-// Vite config is already set up to serve from the public/ folder.

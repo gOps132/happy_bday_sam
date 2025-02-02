@@ -14,6 +14,9 @@
 			<h1>HAPPY 18TH BIRTHDAY SAM</h1>
 			<photo-slideshow></photo-slideshow>
 			<h1>THANKS FOR BEING OUR FRIEND!</h1>
+			<img class="amongus" src="/gif/among-us-twerk.gif" width="400" height="300" />
+			<img class="anime-girl" src="/gif/anime girl dance.gif" width="400" height="300" />
+			<!-- <img class="man" src="/gif/man-twirk.gif" width="400" height="300" /> -->
 		</main>
 		<div id="loader" style="display: none;">
 			<p>Loading ...</p>
@@ -28,7 +31,8 @@
 
 			function playRandomAudio() {
 			return new Promise((resolve, reject) => {
-				const randomAudio = Math.random() > 0.5 ? this.audio1 : this.audio2;
+				// const randomAudio = Math.random() > 0.5 ? this.audio1 : this.audio2;
+				const randomAudio = this.audio2;
 
 				// Check if the audio is loaded and can be played
 				if (!randomAudio) {

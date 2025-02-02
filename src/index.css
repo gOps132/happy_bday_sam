@@ -76,7 +76,7 @@ main > h1 {
   background-color: white;
   animation: gradient 15s ease infinite;
   background: linear-gradient(10deg, #2b11d2, #eb06b9);
-  opacity: 0.6;
+  opacity: 0.9;
   
   /* Make sure the background is clipped to the text */
   -webkit-background-clip: text;
@@ -89,9 +89,23 @@ main > h1 {
   
 }
 
-/* @media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
+.amongus {
+  position: absolute;
+  top: 10pt;
+  right: 10pt;
+  z-index: -1;
+}
+
+/* .man {
+  position: absolute;
+  top: 10pt;
+  right: 10pt;
+  z-index: -1;
 } */
+
+.anime-girl {
+  position: absolute;
+  bottom: 10pt;
+  left: 10pt;
+  z-index: -1;
+}
