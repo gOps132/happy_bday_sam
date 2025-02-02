@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<link rel="icon" type="image/svg+xml" href="/vite.svg" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Vite + Lit + TS</title>
+		<script src="https://cdn.jsdelivr.net/npm/@tsparticles/preset-confetti@3/tsparticles.preset.confetti.bundle.min.js"></script>
+		<link rel="stylesheet" href="./src/index.css" />
+		<script type="module" src="/src/slideshow.ts"></script>
+		<script type="module" src="/src/HiddenContent.ts"></script>
+	</head>
+	<body>
+		<div id="confetti-container"></div>
+			<main>
+				<h1>HAPPY 18TH BIRTHDAY SAM</h1>
+				<photo-slideshow></photo-slideshow>
+				<h1>THANKS FOR BEING OUR FRIEND!</h1>
+			</main>
+		<script>
+			// Initialize tsParticles for confetti effect
+			tsParticles.load("confetti-container", {
+				preset: "confetti", // Use the built-in confetti preset
+				particles: {
+					number: {
+						value: 100, // Number of confetti particles
+					},
+					shape: {
+						type: "triangle", // Shape of confetti
+					},
+					size: {
+						value: 3, // Size of confetti
+					},
+					opacity: {
+						value: 1, // Full opacity
+					},
+					move: {
+						enable: true,
+						speed: 5, // Speed of confetti movement
+						direction: "none", // Allow random direction
+						outMode: "out", // Allow confetti to leave the screen
+					},
+				},
+			});
+		</script>
+	</body>
+</html>
+
